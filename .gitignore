@@ -1,0 +1,27 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# VSCode
+.vscode/
+
+# Chroma vector database
+banco_vetorial/
+*.sqlite3
+*.bin
+
+# Documents (remove if you want to version them)
+documentos/
+
+# macOS system files
+.DS_Store
+
+# Logs
+*.log
