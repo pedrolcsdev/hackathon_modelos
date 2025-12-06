@@ -1,0 +1,1 @@
+streamlit python-docx pypdf groq dotenv chromadb 
