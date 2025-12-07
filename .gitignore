@@ -17,7 +17,7 @@ banco_vetorial/
 *.sqlite3
 *.bin
 
-# Documents (se quiser versionar, remova esta linha)
+# Documents
 documentos/
 
 # macOS system files
