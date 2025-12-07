@@ -400,7 +400,7 @@ Frase do usuário: "{texto}"
     except:
         pass
 
-    # detectar nome informado pelo usuário
+    #detectar nome informado pelo usuário
     if texto_l.startswith("meu nome e") or texto_l.startswith("meu nome é"):
         nome = texto.split(" ", 3)[-1].strip()
         if historico is not None:
