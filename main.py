@@ -349,13 +349,6 @@ def tratar_comando_usuario(texto, historico=None):
                    "oi boa noite", "ola boa noite", "olá boa noite"):
         return "Olá! Como posso ajudar hoje?"
 
-    # Saudações simples (evita cair no RAG e retornar "Não encontrei essa informação")
-    if texto_l in ("oi", "ola", "olá", "bom dia", "boa tarde", "boa noite",
-                   "oi bom dia", "ola bom dia", "olá bom dia",
-                   "oi boa tarde", "ola boa tarde", "olá boa tarde",
-                   "oi boa noite", "ola boa noite", "olá boa noite"):
-        return "Olá! Como posso ajudar hoje?"
-
     # --- NLU via IA: interpretar frases naturais (Opção B) ---
     try:
         prompt_nlu = f"""
