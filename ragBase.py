@@ -1,3 +1,4 @@
+import csv
 import os
 import chromadb
 from groq import Groq
@@ -33,6 +34,16 @@ def extrair_texto(caminho_arquivo):
         elif extensao == ".txt":
             with open(caminho_arquivo, 'r', encoding='utf-8') as f:
                 return f.read()
+
+        elif extensao == ".csv":
+            with open(caminho_arquivo, 'r', encoding='utf-8-sig', newline='') as f:
+                amostra = f.read(8192)
+                f.seek(0)
+                try:
+                    dialeto = csv.Sniffer().sniff(amostra, delimiters=',;\t|')
+                except csv.Error:
+                    dialeto = csv.excel
+                return "\n".join(" | ".join(celula.strip() for celula in linha) for linha in csv.reader(f, dialeto))
                 
     except Exception as e:
         print(f"Erro ao ler {caminho_arquivo}: {e}")
@@ -49,7 +60,7 @@ def processar_arquivos():
         print("Pasta criada. Adicione seus arquivos e tente novamente.")
         return
 
-    arquivos = [f for f in os.listdir(PASTA_DOCUMENTS) if f.endswith(('.txt', '.pdf', '.docx'))]
+    arquivos = [f for f in os.listdir(PASTA_DOCUMENTS) if f.lower().endswith(('.txt', '.pdf', '.docx', '.csv'))]
 
     for nome_arquivo in arquivos:
         caminho = os.path.join(PASTA_DOCUMENTS, nome_arquivo)
